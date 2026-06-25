@@ -441,6 +441,7 @@ class ThermalFlowPidPowerApp(QWidget):
                     errors="ignore",
                 ).strip()
                 self.process_line(line)
+                #print("RAW SERIAL:", line)
 
         except Exception as exc:
             self.status_label.setText(f"Serial error: {exc}")
@@ -461,7 +462,7 @@ class ThermalFlowPidPowerApp(QWidget):
 
         parts = line.split(",")
 
-        if len(parts) != 17:
+        if len(parts) < 17:
             return
 
         try:
